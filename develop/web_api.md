@@ -47,6 +47,7 @@
 <li><a href="#list-share-links">List Share Links</a></li>
 <li><a href="#create-share-link">Create Share Link</a></li>
 <li><a href="#delete-share-link">Delete Share Link</a></li>
+<li><a href="#send-share-link-email">Send Share Link Email</a></li>
 <li><a href="#list-direntry-in-dir-download-link">List Direntry in Dir Download Link</a></li>
 </ul>
 </li>
@@ -54,6 +55,7 @@
 <li><a href="#list-upload-links">List Upload Links</a></li>
 <li><a href="#create-upload-link">Create Upload Link</a></li>
 <li><a href="#delete-upload-link">Delete Upload Link</a></li>
+<li><a href="#send-upload-link-email">Send Upload Link Email</a></li>
 </ul>
 </li>
 <li><a href="#shared-libraries">Shared Libraries</a><ul>
@@ -915,6 +917,43 @@ Create download link for directory with password and expire date
 
     {"success":true}
 
+#### <a id="send-share-link-email"></a>Send Share Link Email ####
+
+**POST** https://cloud.seafile.com/api2/send-share-link/
+
+**Request parameters**
+
+* token
+* email
+* extra_msg (not necessary)
+
+**Sample request**
+
+    curl -d "email=sample@eamil.com,invalid-email&token=4cbd625c5e" -H 'Authorization: Token ef12bf1e66a1aa797a1d6556fdc9ae84f1e9249f' -H 'Accept: application/json; indent=4' https://cloud.seafile.com/api2/send-share-link/
+
+**Sample response**
+
+```
+{
+    "failed": [
+        {
+            "email": "invalid-email",
+            "error_msg": "email invalid."
+        }
+    ],
+    "success": [
+        "sample@eamil.com"
+    ]
+}
+```
+
+**Errors**
+
+* 400 token/repo_id invalid
+* 403 Permission denied.
+* 403 Sending shared link failed. Email service is not properly configured, please contact administrator.
+* 404 token/library not found
+
 #### <a id="list-direntry-in-dir-download-link"></a>List Direntry in Dir Download Link ####
 
 **GET** https://cloud.seafile.com/api2/d/{token}/dir/
@@ -992,6 +1031,40 @@ Create upload link for directory with password
 **Sample response**
 
     {"success":true}
+
+#### <a id="send-upload-link-email"></a>Send Upoad Link Email ####
+
+**POST** https://cloud.seafile.com/api2/send-upload-link/
+
+**Request parameters**
+
+* token
+* email
+* extra_msg (not necessary)
+
+**Sample request**
+
+    curl -d "email=sample@eamil.com,invalid-email&token=4cbd625c5e" -H 'Authorization: Token ef12bf1e66a1aa797a1d6556fdc9ae84f1e9249f' -H 'Accept: application/json; indent=4' https://cloud.seafile.com/api2/send-upload-link/
+
+**Sample response**
+
+```
+{
+    "failed": [
+        {
+            "email": "invalid-email",
+            "error_msg": "email invalid."
+        }
+    ],
+    "success": [
+        "sample@eamil.com"
+    ]
+}
+```
+* 400 token/repo_id invalid
+* 403 Permission denied.
+* 403 Sending shared link failed. Email service is not properly configured, please contact administrator.
+* 404 token/library not found
 
 ### <a id="shared-libs"></a>Shared Libraries ###
 
