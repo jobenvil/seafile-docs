@@ -1,6 +1,6 @@
 # Web API V2.1
 
-Note: The following API is only available since Seafile v5.1.
+Note: The following APIs are only available since Seafile v5.1.
 
 <p><div class="toc">
 <li><a href="#share">Share</a><ul>
