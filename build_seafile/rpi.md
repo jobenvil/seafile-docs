@@ -123,7 +123,7 @@ To build seafile server, there are four sub projects involved:
 
 The build process has two steps:
 
-- First, fetch the tags of each projects, and make a soruce tarball for each of them.
+- First, fetch the tags of each projects, and make a source tarball for each of them.
 - Then run a `build-server.py` script to build the server package from the source tarballs.
 
 ### <a id="wiki-fetch-tags-and-prepare-tarballs"></a> Fetch git tags and prepare source tarballs
